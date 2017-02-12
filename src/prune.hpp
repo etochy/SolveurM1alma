@@ -15,7 +15,7 @@ public:
 	virtual ~Prune();
 
 	virtual void run(int node, std::vector<char> solution);
-	void printResult();
+	virtual void printResult();
 
 private:
 	
