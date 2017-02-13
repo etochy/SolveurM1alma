@@ -9,10 +9,7 @@
 #include <algorithm>
 #include <fstream>
 
-
-#include "prune.hpp"
-
-class Backtracking : public Prune{
+class Backtracking{
 public:
 	Backtracking();
 	~Backtracking();
