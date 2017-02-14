@@ -9,6 +9,9 @@
 #include <algorithm>
 #include <fstream>
 
+#include "contraintes.hpp"
+using namespace std;
+
 class BranchAndPruneSacha{
 public:
 	BranchAndPruneSacha(int sizeQueenBoard);
@@ -18,10 +21,8 @@ public:
 	void printResult();
 
 private:
-	
-	std::vector<std::vector<char> > result;
-
-	bool contains(char item, std::vector<char> &vector);
+	int* mat;
+	std::list<std::list<int> > domains;
 };
 
 #endif
