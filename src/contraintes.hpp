@@ -1,22 +1,17 @@
 #ifndef CONTRAINTES_HPP_
 #define CONTRAINTES_HPP_
 
-#include <stdlib.h>
-#include <time.h> 
-
-#include <vector>
 #include <iostream>
-#include <algorithm>
-#include <fstream>
+#include <list>
+using namespace std;
 
 class Contraintes {
-public:
-	Contraintes();
-	~Contraintes();
-	
-	bool verify(std::list<std::list<int> > domaines);
+	public:
+		Contraintes();
+		~Contraintes();
+    bool verify(list<list<int>> domaines);
 
-private:
+	private:
 	
 };
 

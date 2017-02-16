@@ -1,28 +1,25 @@
 #ifndef BRANCHANDPRUNESACHA_HPP_
 #define BRANCHANDPRUNESACHA_HPP_
 
-#include <stdlib.h>
-#include <time.h> 
-
-#include <vector>
 #include <iostream>
-#include <algorithm>
-#include <fstream>
-
+#include <list>
 #include "contraintes.hpp"
-using namespace std;
+
 
 class BranchAndPruneSacha{
 public:
 	BranchAndPruneSacha(int sizeQueenBoard);
 	~BranchAndPruneSacha();
-
-	void run(int node, std::vector<char> solution);
-	void printResult();
+	int run();
+    bool isValid(list<list<int>> domainsSet);
+    list<list<int>> prune(list<list<int>> domains, list<Contraintes> c);
 
 private:
 	int* mat;
-	std::list<std::list<int> > domains;
+    list<int> variables;
+	list<list<int>> domains;
+    list<Contraintes> constraints;
+    list<int> result;
 };
 
 #endif

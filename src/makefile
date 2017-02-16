@@ -1,12 +1,21 @@
 CXX=g++
-CXXFLAGS=-g -O2 -std=c++11
+CXXFLAGS=-std=c++11 -stdlib=libc++
 
-all: backtracking
+all: branchAndPruneSacha
 
 .PHONY: clean
 
-clean:
-	-rm *.o backtracking out.txt
+branchAndPruneSacha: solve.o branchAndPruneSacha.o contraintes.o
+	$(CXX) $(CXXFLAGS) -o branchAndPruneSacha solve.o branchAndPruneSacha.o contraintes.o
 
-backtracking: main.o backtracking.o
-	$(CXX) -o backtracking main.o backtracking.o
+solve.o: solve.cpp branchAndPruneSacha.o contraintes.o
+	$(CXX) $(CXXFLAGS) -c -o solve.o solve.cpp
+
+branchAndPruneSacha.o: branchAndPruneSacha.cpp contraintes.cpp
+	$(CXX) $(CXXFLAGS) -c -o branchAndPruneSacha.o branchAndPruneSacha.cpp
+
+contraintes.o: contraintes.cpp
+	$(CXX) $(CXXFLAGS) -c -o contraintes.o contraintes.cpp
+	
+clean:
+	-rm *.o branchAndPruneSacha out.txt
