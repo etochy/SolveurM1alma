@@ -12,12 +12,13 @@ BranchAndPruneSacha::BranchAndPruneSacha(int sizeQueenBoard){
 		// Donc on ajoute Di  à D.
 
 	list<int> di{0,1};
-	for (int i = 0; i < variables.size(); ++i)
+	for (int i = 0; i < sizeQueenBoard * sizeQueenBoard; ++i)
 	{
+        cout<<"Filling domains with basic di domain"<<endl;
 		domains.push_back(di);
 	}
 
-	// On créer un ensemble de contraintes qu'on remplira plus tard...
+	// On créer un ensemble de contraintes
 
 	constraints = {};
 
@@ -34,7 +35,6 @@ int BranchAndPruneSacha::run(){
 	nodes.push_back(domains);
 
 	while(!nodes.empty()) {
-        cout<<"Passage dans la boucle de type TQ"<<endl;
 		list<list<int>> e = nodes.front();
 		nodes.pop_front();
 		list<list<int>> f = prune(e, constraints); //prune doit renvoyer un ens. vide si simple backtracking
@@ -110,5 +110,5 @@ bool BranchAndPruneSacha::isValid(list<list<int>> ensDom) {
 }
 
 list<list<int>> BranchAndPruneSacha::prune(list<list<int>> domains, list<Contraintes> cons) {
-    return domains;
+    return {};
 }
