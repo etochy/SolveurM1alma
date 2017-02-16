@@ -7,12 +7,12 @@ using namespace std;
 
 class Contraintes {
 	public:
-		Contraintes();
+		Contraintes(int boardsize);
 		~Contraintes();
     bool verify(list<list<int>> domaines);
 
 	private:
-	
+    int queensize;
 };
 
 #endif

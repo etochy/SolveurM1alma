@@ -19,8 +19,9 @@ BranchAndPruneSacha::BranchAndPruneSacha(int sizeQueenBoard){
 	}
 
 	// On créer un ensemble de contraintes
-
 	constraints = {};
+    Contraintes queen(sizeQueenBoard);
+    constraints.push_back(queen);
 
 }
 
@@ -35,6 +36,7 @@ int BranchAndPruneSacha::run(){
 	nodes.push_back(domains);
 
 	while(!nodes.empty()) {
+        //cout<<"Passage dans la jolie boucle TQ"<<endl;
 		list<list<int>> e = nodes.front();
 		nodes.pop_front();
 		list<list<int>> f = prune(e, constraints); //prune doit renvoyer un ens. vide si simple backtracking
@@ -110,5 +112,11 @@ bool BranchAndPruneSacha::isValid(list<list<int>> ensDom) {
 }
 
 list<list<int>> BranchAndPruneSacha::prune(list<list<int>> domains, list<Contraintes> cons) {
-    return {};
+    for (list<Contraintes>::iterator it = cons.begin(); it != cons.end(); ++it) {
+        if (!it->verify(domains)) {
+            cout<<"Delete Node"<<endl;
+            return {};
+        }
+    }
+    return domains;
 }
