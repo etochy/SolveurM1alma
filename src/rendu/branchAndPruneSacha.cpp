@@ -58,38 +58,46 @@ int BranchAndPruneSacha::run(){
 			}
             else {
                 list<int> smallerDomain = *f.begin(); // Dxi
-                int count = 0; // simple compteur pour obtenir la position de xi
+                int count = 0; // simple compteur pour déterminer la position de xi
                 int xi = 0; //position de xi dans F
                 
                 // On cherche la variable (xi) avec le plus petit domaine (Dxi) dans F.
                 for (list<list<int>>::iterator it = f.begin(); it != f.end(); ++it) {
+                    if (smallerDomain.size() == 1) {
+                        smallerDomain.clear();
+                        smallerDomain.assign(it->begin(), it->end());
+                    }
                     if (it->size() < smallerDomain.size()) {
+                        smallerDomain.clear();
                         smallerDomain.assign(it->begin(), it->end());
                         xi = count;
                     }
                     ++count;
                 }
                 
-                // Pour chaque valeur "a" dans smallerDomain (Dxi)
-                for (list<int>::iterator it = smallerDomain.begin(); it != smallerDomain.end(); ++it) {
-                
-                    // Une copie G de F est faite
-                    list<list<int>> g;
-                    g.assign(f.begin(), f.end());
-                    
-                    count = 0;
-                    // On assigne à xi "a" dans G. Dxi est donc réduit à "a".
-                    for (list<list<int>>::iterator itg = g.begin(); itg != g.end(); ++itg) {
-                        if (count == xi) {
-                            itg->clear();
-                            itg->push_back(*it);
-                            
+                if (smallerDomain.size() > 1) {
+                    // Pour chaque valeur "a" dans smallerDomain (Dxi)
+                    for (list<int>::iterator it = smallerDomain.begin(); it != smallerDomain.end(); ++it) {
+                        
+                        // Une copie G de F est faite
+                        list<list<int>> g;
+                        g.assign(f.begin(), f.end());
+                        
+                        count = 0;
+                        // On assigne à xi "a" dans G. Dxi est donc réduit à "a".
+                        for (list<list<int>>::iterator itg = g.begin(); itg != g.end(); ++itg) {
+                            if (count == xi) {
+                                itg->clear();
+                                itg->push_back(*it);
+                                cout<<"replacing value in domain : "<<itg->front()<<endl;
+                                
+                            }
+                            ++count;
                         }
-                        ++count;
+                        
+                        // G est ajouté à nodes.
+                        nodes.push_back(g);
                     }
-                    
-                    // G est ajouté à nodes.
-                    nodes.push_back(g);
                 }
             }
 		}
