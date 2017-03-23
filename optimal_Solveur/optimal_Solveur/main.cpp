@@ -14,7 +14,7 @@ int main(int argc, const char * argv[]) {
     // Construction des domaines pour le problème des reines__________________________
     Node domainSet;
     Domain queenDomain;
-    int queenBoardSize = 4; // Taille de la grille pour le problème des reines
+    int queenBoardSize = 7; // Taille de la grille pour le problème des reines
     
     // Construction d'un domaine type pour le problème des reines
     // Di = {0, 1, ..., n} (avec n = queenBoardSize)
@@ -32,8 +32,9 @@ int main(int argc, const char * argv[]) {
     vector<Constraints*> cons;
     Constraints *verifDiagonale = new Queen(queenBoardSize);
     Constraints *allDiff = new AllDifferent();
-    cons.push_back(verifDiagonale);
     cons.push_back(allDiff);
+    cons.push_back(verifDiagonale);
+    
     
     
     // Créer un objet de type BranchAndPrune et exécute l'algorithme

@@ -24,11 +24,13 @@ public:
     bool isEmpty(); // Renvoie vrai si le Noeud est vide, faux sinon.
     bool areAllVariablesAffected(); // Renvoie vrai si tous les domaines de domainList sont réduit à 1.
     
-    vector<Domain>::iterator getSmallerDomain(); // Renvoie le plus petit domaine de domainList.
+    int getSmallerDomain(); // Renvoie le plus petit domaine de domainList.
     vector<Domain> getDomainList();
     
-    void supElementFromEveryDomain(int element); // Supprime l'element des domaines (sauf ceux réduit à 1).
+    bool supElementFromEveryDomain(int element); // Supprime l'element des domaines (sauf ceux réduit à 1).
     void print();
+    
+    void replace(int nombreDomaine, int element); // Remplace le domaine avec l'élément.
     
 private:
     vector<Domain> domainList;

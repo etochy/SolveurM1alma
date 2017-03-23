@@ -24,7 +24,7 @@ public:
     
     bool contains(int element); // Renvoie vrai si integerSet contient l'élément passé en paramètre. Faux sinon.
     
-    void suppress(int element); // Supprime l'élément d'integerSet.
+    bool suppress(int element); // Supprime l'élément d'integerSet.
     int pop(); // Supprime et renvoie le premier élément d'integerSet.
     int pop_back(); // Supprime et renvoie le dernier élément d'integerSet.
     
@@ -35,6 +35,8 @@ public:
     vector<int> getIntegerSet();
     
     void print();
+    
+    void push(int element); // Ajoute un element sans condition dans integerSet.
 private:
     vector<int> integerSet;
     void sort(); // Réordonne l'integerSet

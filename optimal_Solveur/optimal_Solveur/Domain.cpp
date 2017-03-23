@@ -24,7 +24,7 @@ void Domain::add(int element) {
 }
 
 void Domain::copy(Domain domain) {
-    integerSet.clear();
+    //integerSet.clear();
     integerSet = domain.getIntegerSet();
 }
 
@@ -33,13 +33,23 @@ void Domain::replace(int element) {
     integerSet.push_back(element);
 }
 
-void Domain::suppress(int element) {
+bool Domain::suppress(int element) {
     
-    for (vector<int>::iterator it = integerSet.begin(); it != integerSet.end(); ++it) {
-        if (*it == element) {
-            integerSet.erase(it);
+    bool ret = false;
+    
+    int el;
+    for (vector<int>::iterator it = integerSet.begin(); it != integerSet.end();) {
+        el = *it;
+        if (el == element) {
+            it = integerSet.erase(it);
+            ret = true;
+        }
+        else {
+           ++it;
         }
     }
+    
+    return ret;
     
     /* Suppression sans iterator
     for (int i = 0; i < integerSet.size(); ++i) {
@@ -91,6 +101,10 @@ bool Domain::contains(int element){
         }
     }
     return false;
+}
+
+void Domain::push(int element) {
+    integerSet.push_back(element);
 }
 
 void Domain::print() {
