@@ -14,7 +14,12 @@ int main(int argc, const char * argv[]) {
     // Construction des domaines pour le problème des reines__________________________
     Node domainSet;
     Domain queenDomain;
-    int queenBoardSize = 10; // Taille de la grille pour le problème des reines
+    int queenBoardSize = 0;
+
+    std::cout << "taille" << std::endl;
+    std::cin >> queenBoardSize;
+
+     // Taille de la grille pour le problème des reines
     
     // Construction d'un domaine type pour le problème des reines
     // Di = {0, 1, ..., n} (avec n = queenBoardSize)
