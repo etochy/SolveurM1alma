@@ -73,6 +73,10 @@ void Node::replace(int domainNumber, int element) {
     domainList[domainNumber].replace(element);
 }
 
+void Node::suppress(int domainNumber, int element) {
+    domainList[domainNumber].suppress(element);
+}
+
 void Node::print() {
     cout << " Noeud : { ";
     for (int i = 0; i < domainList.size(); ++i) {

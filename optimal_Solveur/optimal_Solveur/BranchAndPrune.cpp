@@ -83,6 +83,12 @@ Node BranchAndPrune::forwardChecking(Node e) {
     for (vector<Constraints*>::iterator it = constraintSet.begin(); it != constraintSet.end(); ++it) {
         (*it)->contract(&e);
     }
+    
+    for(Domain d : e.getDomainList()) {
+        if (d.size() < 1) {
+            return Node();
+        }
+    }
     return prune(e);
 }
 
@@ -104,6 +110,7 @@ void BranchAndPrune::printResult() {
         for (int i = 0; i < results.size(); ++i) {
             results[i].print();
         }
+        cout<<"Total : "<<results.size()<<endl;
     }
     else {
         cout << "Pas de solutions trouvées pour le problème courant." << endl;

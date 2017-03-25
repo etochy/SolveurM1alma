@@ -35,8 +35,6 @@ bool Queen::check(Node e) {
             
         }
     }
-    
-    
     return true;
 }
 
@@ -50,8 +48,8 @@ void Queen::contract(Node* e) {
                 if (k != i) {
                     int xj1 = xi - k + i;
                     int xj2 = xi + k - i;
-                    copyForContract[k].suppress(xj1);
-                    copyForContract[k].suppress(xj2);
+                    e->suppress(k, xj1);
+                    e->suppress(k, xj2);
                 }
             }
             

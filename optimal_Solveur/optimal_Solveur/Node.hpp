@@ -31,6 +31,7 @@ public:
     void print();
     
     void replace(int nombreDomaine, int element); // Remplace le domaine avec l'élément.
+    void suppress(int domainNumber, int element);
     
 private:
     vector<Domain> domainList;

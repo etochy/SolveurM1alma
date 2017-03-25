@@ -45,7 +45,7 @@ void AllDifferent::contract(Node* e) {
         }
     }
     
-    /*if (modification) {
+    if (modification) {
         contract(e);
-    }*/
+    }
 }
