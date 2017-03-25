@@ -17,9 +17,20 @@ bool AllDifferent::check(Node e) {
     Domain tmpList;
     vector<Domain> domainStudy = e.getDomainList();
     
-    for (int i = 0; i < domainIndex.size(); ++i) {
+    /*for (int i = 0; i < domainIndex.size(); ++i) {
         if (domainStudy[domainIndex[i]].size() == 1) {
             if (!(tmpList.contains(domainStudy[domainIndex[i]].front()))) {
+                tmpList.push(domainStudy[i].front());
+            }
+            else {
+                return false;
+            }
+        }
+    }*/
+    
+    for (int i : domainIndex) {
+        if (domainStudy[i].size() == 1) {
+            if (!(tmpList.contains(domainStudy[i].front()))) {
                 tmpList.push(domainStudy[i].front());
             }
             else {

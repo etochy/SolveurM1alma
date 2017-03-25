@@ -24,7 +24,6 @@ void Domain::add(int element) {
 }
 
 void Domain::copy(Domain domain) {
-    //integerSet.clear();
     integerSet = domain.getIntegerSet();
 }
 
@@ -48,7 +47,7 @@ bool Domain::suppress(int element) {
         else if (element > integerSet[mid]) {
             begin = mid + 1;
         }
-        else if(element == integerSet[mid]){
+        else {
             found = true;
             integerSet.erase(integerSet.begin()+mid);
         }
@@ -105,7 +104,7 @@ bool Domain::contains(int element){
         else if (element > integerSet[mid]) {
             begin = mid + 1;
         }
-        else if(element == integerSet[mid]){
+        else {
             found = true;
         }
     }

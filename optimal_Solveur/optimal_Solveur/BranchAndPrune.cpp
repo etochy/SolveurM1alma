@@ -22,8 +22,6 @@ int BranchAndPrune::run() {
     
     Node pruningResult;
     
-    Node eCopy;
-    
     int smallerDomain = 0;
     
     while (!nodes.empty()) {
@@ -47,17 +45,16 @@ int BranchAndPrune::run() {
                 // On récupère le plus petit domaine du résultat du pruning
                 smallerDomain = pruningResult.getSmallerDomain();
                 
-                // On copie le résultat du pruning précédent
-                eCopy.copy(pruningResult);
-                
                 // Pour chacun des éléments dans le domaine "smallerDomain"
                 for (int cp : pruningResult.getDomainList()[smallerDomain].getIntegerSet()) {
                     
                     // On assigne l'élément v au domaine "smallerDomain" dans eCopy
-                    eCopy.replace(smallerDomain, cp);
+                    pruningResult.replace(smallerDomain, cp);
                     
-                    // On ajoute eCopy à la liste des Noeuds
-                    nodes.push_back(eCopy);
+                    if (!forwardChecking(pruningResult).isEmpty()) {
+                        // On ajoute eCopy à la liste des Noeuds
+                        nodes.push_back(pruningResult);
+                    }
                 }
             }
         }
@@ -69,8 +66,9 @@ int BranchAndPrune::run() {
 
 // Réalise un simple backtracking
 Node BranchAndPrune::prune(Node e) {
-    for (vector<Constraints*>::iterator it = constraintSet.begin(); it != constraintSet.end(); ++it) {
-        if (!(*it)->check(e)) {
+    
+    for (Constraints* c : constraintSet) {
+        if (!(c->check(e))) {
             return Node();
         }
     }
@@ -80,8 +78,8 @@ Node BranchAndPrune::prune(Node e) {
 // Réalise un forward Check
 Node BranchAndPrune::forwardChecking(Node e) {
     
-    for (vector<Constraints*>::iterator it = constraintSet.begin(); it != constraintSet.end(); ++it) {
-        (*it)->contract(&e);
+    for (Constraints* c : constraintSet) {
+        c->contract(&e);
     }
     
     for(Domain d : e.getDomainList()) {

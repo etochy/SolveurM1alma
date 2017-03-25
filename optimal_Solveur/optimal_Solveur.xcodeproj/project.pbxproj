@@ -13,6 +13,7 @@
 		2034607F1E576FE600BE7FA6 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2034607D1E576FE600BE7FA6 /* Node.cpp */; };
 		203460821E576FFF00BE7FA6 /* Domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 203460801E576FFF00BE7FA6 /* Domain.cpp */; };
 		205F2AF81E71674900C34411 /* Queen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 205F2AF61E71674900C34411 /* Queen.cpp */; };
+		20716A2C1E86CD550079ED23 /* SendMoreMoney.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20716A2A1E86CD550079ED23 /* SendMoreMoney.cpp */; };
 		20A771A71E77EC57001D6F7E /* AllDifferent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20A771A51E77EC57001D6F7E /* AllDifferent.cpp */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,8 @@
 		203460811E576FFF00BE7FA6 /* Domain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Domain.hpp; sourceTree = "<group>"; };
 		205F2AF61E71674900C34411 /* Queen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Queen.cpp; sourceTree = "<group>"; };
 		205F2AF71E71674900C34411 /* Queen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Queen.hpp; sourceTree = "<group>"; };
+		20716A2A1E86CD550079ED23 /* SendMoreMoney.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SendMoreMoney.cpp; sourceTree = "<group>"; };
+		20716A2B1E86CD550079ED23 /* SendMoreMoney.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SendMoreMoney.hpp; sourceTree = "<group>"; };
 		20A771A51E77EC57001D6F7E /* AllDifferent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AllDifferent.cpp; sourceTree = "<group>"; };
 		20A771A61E77EC57001D6F7E /* AllDifferent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AllDifferent.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +91,8 @@
 				205F2AF71E71674900C34411 /* Queen.hpp */,
 				20A771A51E77EC57001D6F7E /* AllDifferent.cpp */,
 				20A771A61E77EC57001D6F7E /* AllDifferent.hpp */,
+				20716A2A1E86CD550079ED23 /* SendMoreMoney.cpp */,
+				20716A2B1E86CD550079ED23 /* SendMoreMoney.hpp */,
 			);
 			path = optimal_Solveur;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				203460821E576FFF00BE7FA6 /* Domain.cpp in Sources */,
 				2034607F1E576FE600BE7FA6 /* Node.cpp in Sources */,
 				20A771A71E77EC57001D6F7E /* AllDifferent.cpp in Sources */,
+				20716A2C1E86CD550079ED23 /* SendMoreMoney.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 #include "Constraints.hpp"
 #include "Queen.hpp"
 #include "AllDifferent.hpp"
+#include "SendMoreMoney.hpp"
 #include "Domain.hpp"
 #include "Node.hpp"
 

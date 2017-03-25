@@ -29,8 +29,9 @@ bool Node::isEmpty() {
 }
 
 bool Node::areAllVariablesAffected() {
-    for (vector<Domain>::iterator it = domainList.begin(); it != domainList.end(); ++it) {
-        if (it->size() != 1) {
+
+    for (Domain d : domainList) {
+        if (d.size() != 1) {
             return false;
         }
     }
@@ -62,9 +63,19 @@ bool Node::supElementFromEveryDomain(int element) {
     
     for (vector<Domain>::iterator it = domainList.begin(); it != domainList.end(); ++it) {
         if (it->size() > 1) {
-            ret = it->suppress(element);
+            if (it->suppress(element)) {
+                ret = true;
+            }
         }
     }
+    
+    /*for (Domain d : domainList) {
+        if (d.size() > 1) {
+            if (d.suppress(element)) {
+                ret = true;
+            }
+        }
+    }*/
     
     return ret;
 }
