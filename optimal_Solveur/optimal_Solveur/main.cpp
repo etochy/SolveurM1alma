@@ -14,7 +14,7 @@ int main(int argc, const char * argv[]) {
     // Construction des domaines pour le problème des reines__________________________
     Node domainSet;
     Domain queenDomain;
-    int queenBoardSize = 7; // Taille de la grille pour le problème des reines
+    int queenBoardSize = 10; // Taille de la grille pour le problème des reines
     
     // Construction d'un domaine type pour le problème des reines
     // Di = {0, 1, ..., n} (avec n = queenBoardSize)
@@ -31,7 +31,12 @@ int main(int argc, const char * argv[]) {
     // Ajout des différentes contraintes pour le problème des reines
     vector<Constraints*> cons;
     Constraints *verifDiagonale = new Queen(queenBoardSize);
-    Constraints *allDiff = new AllDifferent();
+    
+    vector<int> index;
+    for (int i = 0; i < queenBoardSize; ++i) {
+        index.push_back(i);
+    }
+    Constraints *allDiff = new AllDifferent(index);
     cons.push_back(allDiff);
     cons.push_back(verifDiagonale);
     
@@ -45,11 +50,7 @@ int main(int argc, const char * argv[]) {
     bap.run();
     
     clock_t fin = clock();
-    cout << (double)(fin-deb)/CLOCKS_PER_SEC;
+    cout << (double)(fin-deb)/CLOCKS_PER_SEC<<endl;
     
     bap.printResult();
-    
-    // _______________________________________________________________________________
-    
-    // Construction des domaines pour le problème
 }

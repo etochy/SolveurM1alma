@@ -24,7 +24,7 @@ public:
     bool isEmpty(); // Renvoie vrai si le Noeud est vide, faux sinon.
     bool areAllVariablesAffected(); // Renvoie vrai si tous les domaines de domainList sont réduit à 1.
     
-    int getSmallerDomain(); // Renvoie le plus petit domaine de domainList.
+    int getSmallerDomain(); // Renvoie l'indice du plus petit domaine de domainList.
     vector<Domain> getDomainList();
     
     bool supElementFromEveryDomain(int element); // Supprime l'element des domaines (sauf ceux réduit à 1).

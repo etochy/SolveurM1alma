@@ -21,7 +21,6 @@ void Node::add(Domain domain) {
 }
 
 void Node::copy(Node node) {
-    //domainList.clear();
     domainList = node.getDomainList();
 }
 
@@ -39,19 +38,6 @@ bool Node::areAllVariablesAffected() {
 }
 
 int Node::getSmallerDomain() {
-    /*vector<Domain>::iterator ret = domainList.begin();
-    for (vector<Domain>::iterator it = domainList.begin(); it != domainList.end(); ++it) {
-        if ( !(ret->size() > 1) && it->size() > 1 ) {
-            ret = it;
-        }
-        if ((it->size() < ret->size()) && it->size() > 1) {
-            ret = it;
-        }
-    }*/
-    
-    /*if (!(ret->size() > 1)) {
-        // Renvoyer un nullptr
-    }*/
     
     int res = 0;
     for (int i = 0; i < domainList.size(); ++i) {

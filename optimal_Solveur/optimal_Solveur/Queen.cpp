@@ -42,4 +42,19 @@ bool Queen::check(Node e) {
 
 void Queen::contract(Node* e) {
     
+    vector<Domain> copyForContract = e->getDomainList();
+    for (int i = 0; i < copyForContract.size(); ++i) {
+        if (copyForContract[i].size() == 1) {
+            int xi = copyForContract[i].front();
+            for (int k = 0; k < copyForContract.size(); ++k) {
+                if (k != i) {
+                    int xj1 = xi - k + i;
+                    int xj2 = xi + k - i;
+                    copyForContract[k].suppress(xj1);
+                    copyForContract[k].suppress(xj2);
+                }
+            }
+            
+        }
+    }
 }

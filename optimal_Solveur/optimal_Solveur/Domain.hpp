@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <vector>
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 class Domain {
@@ -36,9 +37,10 @@ public:
     
     void print();
     
+    void sort(); // Réordonne l'integerSet
+    
     void push(int element); // Ajoute un element sans condition dans integerSet.
 private:
     vector<int> integerSet;
-    void sort(); // Réordonne l'integerSet
 };
 #endif /* Domain_hpp */

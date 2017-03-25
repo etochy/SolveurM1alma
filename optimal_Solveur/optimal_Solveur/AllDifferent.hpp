@@ -14,10 +14,11 @@
 
 class AllDifferent : public Constraints {
 public:
-    AllDifferent();
+    AllDifferent(vector<int> index);
     bool check(Node e);
     void contract(Node* e);
 private:
+    vector<int> domainIndex; // Liste des domaines sur lequel allDifferent doit être appliqué.
 };
 
 #endif /* AllDifferent_hpp */

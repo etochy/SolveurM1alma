@@ -35,31 +35,27 @@ void Domain::replace(int element) {
 
 bool Domain::suppress(int element) {
     
-    bool ret = false;
+    bool found = false;
+    int begin = 0;
+    int end = integerSet.size() - 1;
+    int mid = 0;
     
-    int el;
-    for (vector<int>::iterator it = integerSet.begin(); it != integerSet.end();) {
-        el = *it;
-        if (el == element) {
-            it = integerSet.erase(it);
-            ret = true;
+    while ( (!found) && (end - begin >= 0) ) {
+        mid = begin + ceil((end - begin) / 2);
+        if(element < integerSet[mid]) {
+            end = mid - 1;
         }
-        else {
-           ++it;
+        else if (element > integerSet[mid]) {
+            begin = mid + 1;
         }
-    }
-    
-    return ret;
-    
-    /* Suppression sans iterator
-    for (int i = 0; i < integerSet.size(); ++i) {
-        if (integerSet[i] == element) {
-            integerSet[i] = back();
+        else if(element == integerSet[mid]){
+            found = true;
+            integerSet.erase(integerSet.begin()+mid);
         }
     }
-    pop_back();
-    sort();
-    */
+    
+    return found;
+    
 }
 
 int Domain::pop() {
@@ -95,16 +91,31 @@ void Domain::sort() {
 }
 
 bool Domain::contains(int element){
-    for (int i = 0; i < integerSet.size(); ++i) {
-        if (integerSet[i] == element) {
-            return true;
+    
+    bool found = false;
+    int begin = 0;
+    int end = integerSet.size() - 1;
+    int mid = 0;
+    
+    while ( (!found) && (end - begin >= 0) ) {
+        mid = begin + ceil((end - begin) / 2);
+        if(element < integerSet[mid]) {
+            end = mid - 1;
+        }
+        else if (element > integerSet[mid]) {
+            begin = mid + 1;
+        }
+        else if(element == integerSet[mid]){
+            found = true;
         }
     }
-    return false;
+    
+    return found;
 }
 
 void Domain::push(int element) {
     integerSet.push_back(element);
+    sort();
 }
 
 void Domain::print() {
