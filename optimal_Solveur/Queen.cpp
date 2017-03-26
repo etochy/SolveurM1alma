@@ -1,11 +1,3 @@
-//
-//  Queen.cpp
-//  optimal_Solveur
-//
-//  Created by Sacha Loriot on 09/03/2017.
-//  Copyright © 2017 Sacha Loriot. All rights reserved.
-//
-
 #include "Queen.hpp"
 
 Queen::Queen(int queenBoardSize) : boardSize(queenBoardSize) {

@@ -1,11 +1,3 @@
-//
-//  AllDifferent.hpp
-//  optimal_Solveur
-//
-//  Created by Sacha Loriot on 14/03/2017.
-//  Copyright © 2017 Sacha Loriot. All rights reserved.
-//
-
 #ifndef AllDifferent_hpp
 #define AllDifferent_hpp
 
@@ -18,7 +10,10 @@ public:
     bool check(Node e);
     void contract(Node* e);
 private:
-    vector<int> domainIndex; // Liste des domaines sur lequel allDifferent doit être appliqué.
+    
+    // Liste d'index représentant les domaines
+    // sur lequel la contrainte AllDifferent doit être appliquée.
+    vector<int> domainIndex;
 };
 
 #endif /* AllDifferent_hpp */

@@ -1,14 +1,13 @@
-//
-//  BranchAndPrune.cpp
-//  optimal_Solveur
-//
-//  Created by Sacha Loriot on 17/02/2017.
-//  Copyright © 2017 Sacha Loriot. All rights reserved.
-//
-
 #include "BranchAndPrune.hpp"
 
-BranchAndPrune::BranchAndPrune(Node DSet, vector<Constraints*> CSet):constraintSet(CSet) {
+/**
+ * @brief Initialise une résolution de problèmes.
+ * @param DSet Le premier Noeud à traiter (contient la liste de tous les domaines complets)
+ * @param CSet La liste des contraintes devant être respectées par le solveur
+ * @param everySolutions Détermine si toutes les solutions doivent être trouvées
+ * @note
+ **/
+BranchAndPrune::BranchAndPrune(Node DSet, vector<Constraints*> CSet, bool everySolutions):constraintSet(CSet), displayAllSolutions(everySolutions) {
     nodes.push_back(DSet);
 }
 
@@ -16,6 +15,10 @@ BranchAndPrune::~BranchAndPrune() {
     
 }
 
+/**
+ * @brief Lance la résolution du problème
+ * @note Reprise quasi identique de l'algorithme présenté dans le sujet de projet
+ **/
 int BranchAndPrune::run() {
     
     Node currentNode;
@@ -39,6 +42,9 @@ int BranchAndPrune::run() {
             
             if (isSolution(pruningResult)) {
                 results.push_back(pruningResult);
+                if (!displayAllSolutions) {
+                    return 0;
+                }
             }
             else {
                 
@@ -48,11 +54,9 @@ int BranchAndPrune::run() {
                 // Pour chacun des éléments dans le domaine "smallerDomain"
                 for (int cp : pruningResult.getDomainList()[smallerDomain].getIntegerSet()) {
                     
-                    // On assigne l'élément v au domaine "smallerDomain" dans eCopy
                     pruningResult.replace(smallerDomain, cp);
                     
                     if (!forwardChecking(pruningResult).isEmpty()) {
-                        // On ajoute eCopy à la liste des Noeuds
                         nodes.push_back(pruningResult);
                     }
                 }

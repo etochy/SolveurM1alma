@@ -1,11 +1,3 @@
-//
-//  Node.cpp
-//  optimal_Solveur
-//
-//  Created by Sacha Loriot on 17/02/2017.
-//  Copyright © 2017 Sacha Loriot. All rights reserved.
-//
-
 #include "Node.hpp"
 
 Node::Node() {

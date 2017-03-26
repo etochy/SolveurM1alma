@@ -1,11 +1,3 @@
-//
-//  Queen.hpp
-//  optimal_Solveur
-//
-//  Created by Sacha Loriot on 09/03/2017.
-//  Copyright © 2017 Sacha Loriot. All rights reserved.
-//
-
 #ifndef Queen_hpp
 #define Queen_hpp
 
@@ -19,6 +11,8 @@ public:
     bool check(Node e);
     void contract(Node* e);
 private:
+    
+    // Taille du problème
     int boardSize;
 };
 #endif /* Queen_hpp */

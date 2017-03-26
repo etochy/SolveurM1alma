@@ -1,11 +1,3 @@
-//
-//  AllDifferent.cpp
-//  optimal_Solveur
-//
-//  Created by Sacha Loriot on 14/03/2017.
-//  Copyright © 2017 Sacha Loriot. All rights reserved.
-//
-
 #include "AllDifferent.hpp"
 
 AllDifferent::AllDifferent(vector<int> index):domainIndex(index){
