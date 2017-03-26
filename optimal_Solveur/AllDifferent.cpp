@@ -4,21 +4,16 @@ AllDifferent::AllDifferent(vector<int> index):domainIndex(index){
     
 }
 
+/**
+ * @brief Vérifie qu'un noeud respecte la contrainte "allDifferent".
+ * @param e Le noeud à vérifier.
+ * @return Vrai si le noeud respecte la contrainte, faux sinon.
+ * @note Un domaine temporaire est utilisé pour contenir les différentes valeurs des domaines réduit à 1.
+ **/
 bool AllDifferent::check(Node e) {
     
     Domain tmpList;
     vector<Domain> domainStudy = e.getDomainList();
-    
-    /*for (int i = 0; i < domainIndex.size(); ++i) {
-        if (domainStudy[domainIndex[i]].size() == 1) {
-            if (!(tmpList.contains(domainStudy[domainIndex[i]].front()))) {
-                tmpList.push(domainStudy[i].front());
-            }
-            else {
-                return false;
-            }
-        }
-    }*/
     
     for (int i : domainIndex) {
         if (domainStudy[i].size() == 1) {
@@ -35,6 +30,10 @@ bool AllDifferent::check(Node e) {
     return true;
 }
 
+/**
+ * @brief Contracte les domaines d'un Noeud en fonction de la contrainte "allDifferent".
+ * @param e Le pointeur vers le Noeud devant subir une contraction.
+ **/
 void AllDifferent::contract(Node* e) {
     
     bool modification = false;
@@ -48,6 +47,8 @@ void AllDifferent::contract(Node* e) {
         }
     }
     
+    // Tant qu'une modification est effectuée sur les domaines du Noeud
+    // on relance une contraction
     if (modification) {
         contract(e);
     }

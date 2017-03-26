@@ -4,6 +4,12 @@ SendMoreMoney::SendMoreMoney() {
     
 }
 
+/**
+ * @brief Vérifie qu'un noeud respecte les équations du problème "Send More Money".
+ * @param e Le noeud dont les domaines doivent être vérifiés.
+ * @return Vrai si le noeud respecte la contrainte, faux sinon.
+ * @note Ici, on attend que tous les domaines soient réduit à 1 pour ensuite vérifier que les équations soient respectées.
+ **/
 bool SendMoreMoney::check(Node e) {
     
     vector<Domain> copyForCheck = e.getDomainList();
@@ -46,10 +52,10 @@ bool SendMoreMoney::check(Node e) {
         }
         
     }
-    //cout<<"Returning true"<<endl;
     return true;
 }
 
+// Ici devrait figurer une contraction à l'aide d'inéquations
 void SendMoreMoney::contract(Node* e) {
     
 }

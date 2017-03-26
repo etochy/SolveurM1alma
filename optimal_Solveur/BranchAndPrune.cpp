@@ -5,7 +5,6 @@
  * @param DSet Le premier Noeud à traiter (contient la liste de tous les domaines complets)
  * @param CSet La liste des contraintes devant être respectées par le solveur
  * @param everySolutions Détermine si toutes les solutions doivent être trouvées
- * @note
  **/
 BranchAndPrune::BranchAndPrune(Node DSet, vector<Constraints*> CSet, bool everySolutions):constraintSet(CSet), displayAllSolutions(everySolutions) {
     nodes.push_back(DSet);
@@ -16,8 +15,8 @@ BranchAndPrune::~BranchAndPrune() {
 }
 
 /**
- * @brief Lance la résolution du problème
- * @note Reprise quasi identique de l'algorithme présenté dans le sujet de projet
+ * @brief Lance la résolution du problème.
+ * @note Reprise quasi identique de l'algorithme présenté dans le sujet de projet.
  **/
 int BranchAndPrune::run() {
     
@@ -68,7 +67,10 @@ int BranchAndPrune::run() {
     return 0;
 }
 
-// Réalise un simple backtracking
+/**
+ * @brief Vérifie qu'un Noeud respecte toutes les contraintes du problème.
+ * @param e Le Noeud devant être vérifié.
+ **/
 Node BranchAndPrune::prune(Node e) {
     
     for (Constraints* c : constraintSet) {
@@ -79,13 +81,18 @@ Node BranchAndPrune::prune(Node e) {
     return e;
 }
 
-// Réalise un forward Check
+/**
+ * @brief Réalise un "forward checking" sur un Noeud.
+ * @param e Le Noeud devant subir le "forward checking".
+ * @return Le Noeud contracté ou un Noeud vide si "e" ne respecte plus les contraintes.
+ **/
 Node BranchAndPrune::forwardChecking(Node e) {
     
     for (Constraints* c : constraintSet) {
         c->contract(&e);
     }
     
+    // On vérifie qu'aucun domaines ne soient réduit à 0.
     for(Domain d : e.getDomainList()) {
         if (d.size() < 1) {
             return Node();
@@ -94,10 +101,14 @@ Node BranchAndPrune::forwardChecking(Node e) {
     return prune(e);
 }
 
-// Vérifie si le Noeud passé en paramètre est une solution
+/**
+ * @brief Vérifie si le Noeud passé en paramètre est une solution du problème.
+ * @param node Le Noeud à vérifier.
+ * @return Vrai si c'est une solution, faux sinon.
+ **/
 bool BranchAndPrune::isSolution(Node node) {
     
-    // On vérifie que tous les domaines de node sont réduit à 1
+    // On vérifie que tous les domaines de "node" soient réduit à 1
     if(node.areAllVariablesAffected()) {
         return true;
 
@@ -107,6 +118,9 @@ bool BranchAndPrune::isSolution(Node node) {
     }
 }
 
+/**
+ * @brief Affiche dans la console les résultats trouvés.
+ **/
 void BranchAndPrune::printResult() {
     if (results.size() > 0) {
         for (int i = 0; i < results.size(); ++i) {

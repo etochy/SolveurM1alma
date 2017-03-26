@@ -4,6 +4,11 @@ Queen::Queen(int queenBoardSize) : boardSize(queenBoardSize) {
     
 }
 
+/**
+ * @brief Vérifie que la contrainte des diagonales pour le problème des reines soit respectée.
+ * @param e Le noeud devant être vérifié.
+ * @return Vrai si la contrainte est respectée, faux sinon.
+ **/
 bool Queen::check(Node e) {
     
     vector<Domain> copyForChecking = e.getDomainList();
@@ -30,6 +35,10 @@ bool Queen::check(Node e) {
     return true;
 }
 
+/**
+ * @brief Contracte les domaines du Noeud en fonction de la contrainte des diagonales du problème des reines.
+ * @param e Le pointeur vers le Noeud dont les domaines doivent être contractés.
+ **/
 void Queen::contract(Node* e) {
     
     vector<Domain> copyForContract = e->getDomainList();

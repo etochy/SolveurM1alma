@@ -16,7 +16,7 @@ int main(int argc, const char * argv[]) {
         std::cout << "Souhaitez vous afficher toutes les solutions (1 ou *) :" << std::endl;
         std::cin >> allSol;
         
-        // Construction des domaines pour le problème des reines__________________________
+        // ________________Construction des domaines pour le problème des reines__________________________
         Node domainSet;
         Domain queenDomain;
         int queenBoardSize; // Taille de la grille pour le problème des reines
@@ -56,6 +56,7 @@ int main(int argc, const char * argv[]) {
             
             clock_t deb = clock();
             
+            // Exécution de l'algorithme
             bap.run();
             
             clock_t fin = clock();
@@ -65,11 +66,12 @@ int main(int argc, const char * argv[]) {
         }
         
         else if (allSol == "*") {
-            // Créer un objet de type BranchAndPrune et exécute l'algorithme
+            // Créer un objet de type BranchAndPrune
             BranchAndPrune bap(domainSet, cons, true);
             
             clock_t deb = clock();
             
+            // Exécution de l'algorithme
             bap.run();
             
             clock_t fin = clock();
