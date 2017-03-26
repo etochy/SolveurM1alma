@@ -1,6 +1,6 @@
 CXX=g++
 CXXFLAGS=-std=c++11
-SRC= main.cpp BranchAndPrune.cpp Constraints.cpp Node.cpp Domain.cpp AllDifferent.cpp Queen.cpp
+SRC= main.cpp BranchAndPrune.cpp Constraints.cpp Node.cpp Domain.cpp AllDifferent.cpp Queen.cpp SendMoreMoney.cpp
 OBJ= $(SRC:.cpp=.o)
 
 all: branchAndPrune
@@ -24,6 +24,9 @@ AllDifferent.o: AllDifferent.cpp Constraints.cpp
 	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 Queen.o: Queen.cpp Constraints.cpp
+	$(CXX) -o $@ -c $< $(CXXFLAGS)
+
+SendMoreMoney.o: SendMoreMoney.cpp Constraints.cpp
 	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 clean:
